@@ -1,6 +1,4 @@
-const routes = {
-    
-}
+const routes = {}
 
 function register(path,handler){
     routes[path]=handler;

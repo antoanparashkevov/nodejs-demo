@@ -12,6 +12,7 @@ function html(body, title = 'Demo site') {
             <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
+            <li><a href="/catalog">Catalog</a></li>
             </ul>
 </nav>
      ${body}
@@ -19,7 +20,20 @@ function html(body, title = 'Demo site') {
 </html>`
 
 }
+const data = [
+    {
+        id:'001',
+        name: 'Bag',
+        color: 'Black'
+    },
+    {
+        id:'002',
+        name: 'Pencil',
+        color: 'Yellow'
+    }
+]
 
 module.exports = {
-    html
+    html,
+    data
 }
