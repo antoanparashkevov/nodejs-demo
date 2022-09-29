@@ -7,6 +7,11 @@ const aboutPage = `
 <h1>Welcome to about page</h1>
 `
 
+const routes = {
+    '/': homePage,
+    '/about': aboutPage
+}
+
 //pass a handler as anonymous function
 const server = http.createServer((req, res) => {
     //in the request we have the information for the client behaviour.
@@ -15,23 +20,21 @@ const server = http.createServer((req, res) => {
     console.log(req.headers)
     console.log(req.method)
     console.log(req.url)
-
+    
 
     const url = new URL(req.url, `http://${req.headers.host}`)
+    const page = routes[url.pathname]
+
     console.log(url)
-    if (url.pathname === '/') {
-        res.write(html(homePage))
-        res.end();//this puts an empty row on the last response row
-    } else if (url.pathname === '/about') {
-        res.write(html(aboutPage))
+    if(page !==undefined){
+        res.write(html(page))
         res.end()
-    } else {
+    }else{
         res.statusCode = 404;
-        res.writeHead(200, [
-            'Content-Type', 'text/plain'
+        res.writeHead(404, [
+            'Content-Type', 'plain/text'
         ])
-        res.write('Wrong page');
-        res.end()
+        res.write('Page not found')
     }
 
     //directly write on the stream
