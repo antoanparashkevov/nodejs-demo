@@ -10,7 +10,7 @@ function match(request,response){
     if(typeof handler === 'function') {
         handler(request,response)
     }else{
-        routes.default(req,res)
+        routes.default(request,response)
     }
     
 }
