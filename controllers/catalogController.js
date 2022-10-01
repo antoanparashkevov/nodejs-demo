@@ -1,5 +1,5 @@
 const {html,data} = require("../util.js");
-
+const {IncomingForm} = require('formidable')
 function catalogPage(req,res) {
     res.write(html(
         `<h1>Welcome to catalog page</h1>
@@ -36,8 +36,18 @@ function createPage(req,res){
 }
 function createItem(req,res){
     //TODO handle post request
+    const form = new IncomingForm()
+    form.parse(req,(err,fields)=>{
+        //TODO error handling
+        if(err !== null){
+            // ...
+        }
+        console.log(fields)
+    })
+    res.end()
 }
 module.exports = {
     catalogPage,
-    createPage
+    createPage,
+    createItem
 }
