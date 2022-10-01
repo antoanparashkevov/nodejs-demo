@@ -42,9 +42,20 @@ function createItem(req,res){
         if(err !== null){
             // ...
         }
+        const item = {
+            id: 'asdf'+ '0000' + Math.random() * 9999,
+            name: fields.name,
+            color: fields.color
+        }
+        console.log(item)
+        data.push(item)
         console.log(fields)
+        res.writeHead(301,[
+            'Location',
+            '/catalog'
+        ])
+        res.end()
     })
-    res.end()
 }
 module.exports = {
     catalogPage,
