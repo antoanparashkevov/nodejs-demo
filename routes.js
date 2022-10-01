@@ -26,7 +26,8 @@ function match(request,response){
     if(typeof handler === 'function') {
         handler(request,response)
     }else{
-        routes.default['GET'](request,response)
+        //handler['url.pathname']['request.method']
+        routes['default']['GET'](request,response)
     }
     
 }
