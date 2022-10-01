@@ -31,8 +31,11 @@ function createPage(req,res){
 </div>
 </form>
 `
-    ))
+    ,'Create page'))
     res.end();
+}
+function createItem(req,res){
+    //TODO handle post request
 }
 module.exports = {
     catalogPage,
